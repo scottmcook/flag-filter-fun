@@ -6,9 +6,8 @@ import React, { useReducer, useState } from "react";
 import useSWR from "swr";
 
 // UI Components
-// import Toolbar from "../Toolbar/Toolbar";
-import Card from "../Card/Card";
-// import ProductTable from "../ProductTable/ProductTable";
+
+import Card from "@/Card/Card";
 import Image from "next/image";
 
 function CardLayout() {
