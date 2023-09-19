@@ -4,7 +4,6 @@ import React, { useReducer, useState } from "react";
 
 // Data fetching
 import useSWR from "swr";
-import COUNTRY_API_DATA from "../../data/data.json";
 
 // UI Components
 // import Toolbar from "../Toolbar/Toolbar";
@@ -15,8 +14,6 @@ import Image from "next/image";
 function CardLayout() {
   const [isTable, setLayout] = useState(false);
 
-  const fetcher = async (url) => fetch(url).then((res) => res.json());
-
   const handleGridToggle = () => {
     setLayout(false);
   };
@@ -25,7 +22,7 @@ function CardLayout() {
     setLayout(true);
   };
 
-  const { data, error } = useSWR(COUNTRY_API_DATA, fetcher);
+  const { data, error } = useSWR(handler, fetcher);
   if (error)
     return (
       <div>
