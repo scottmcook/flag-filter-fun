@@ -10,7 +10,7 @@ import useSWR from "swr";
 import Card from "@/Card/Card";
 import Image from "next/image";
 
-function CardLayout() {
+function CardGrid() {
   const [isTable, setLayout] = useState(false);
 
   const handleGridToggle = () => {
@@ -88,4 +88,4 @@ function CardLayout() {
   );
 }
 
-export default CardLayout;
+export default CardGrid;
