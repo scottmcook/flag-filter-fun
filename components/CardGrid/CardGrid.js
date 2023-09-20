@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from "react";
 import CountryCard from "../CountryCard/CountryCard";
 
-function CardGrid({ items }) {
+function CardGrid({ items, searchValue }) {
   return (
     <>
       <div className="grid grid-cols-4 gap-9">
