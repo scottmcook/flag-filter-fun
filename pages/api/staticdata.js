@@ -7,5 +7,6 @@ export default async function handler(req, res) {
     jsonDirectory + "/countries.json",
     "utf8"
   );
-  res.status(200).json(fileContents);
+  const obj = JSON.parse(fileContents);
+  res.status(200).json(obj);
 }
