@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
 
-const UIDB_IMAGE_URL = "https://static.ui.com/fingerprint/ui/icons";
-
 function CountryCard({ data }) {
   const { name, flag, capital, population, region } = data;
   return (
