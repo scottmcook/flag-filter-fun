@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import CountryCard from "../CountryCard/CountryCard";
 
 function CardGrid({ items, searchValue }) {
