@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
-function SearchBar({ searchValue, filterByRegion, onSearch, onFilterChange }) {
+function SearchBar({
+  searchValue,
+  filterByRegion,
+  onInputChange,
+  onFilterChange,
+}) {
   return (
     <form>
       <input
         type="text"
         value={searchValue}
-        onChange={(e) => onSearch(e.target.value)}
+        onChange={(e) => onInputChange(e.target.value)}
         placeholder="Search by country name"
       />
       <label for="region-filter">Filter by Region</label>

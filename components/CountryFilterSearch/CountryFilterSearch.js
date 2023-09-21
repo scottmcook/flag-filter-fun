@@ -10,11 +10,11 @@ function CountryFilterSearch({ countries }) {
     <div>
       <SearchBar
         searchValue={searchValue}
-        filterByRegion={filterByRegion}
         onSearch={setSearchValue}
+        filterByRegion={filterByRegion}
         onFilterChange={setFilterByRegion}
       />
-      <CardGrid items={countries} />
+      <CardGrid searchValue={searchValue} items={countries} />
     </div>
   );
 }
