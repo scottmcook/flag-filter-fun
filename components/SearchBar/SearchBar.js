@@ -2,8 +2,8 @@ import React from "react";
 
 function SearchBar({
   searchValue,
-  filterByRegion,
   onInputChange,
+  filterByRegion,
   onFilterChange,
 }) {
   return (
@@ -12,7 +12,6 @@ function SearchBar({
         type="text"
         value={searchValue}
         onChange={(e) => onInputChange(e.target.value)}
-        placeholder="Search by country name"
       />
       <label for="region-filter">Filter by Region</label>
       <select

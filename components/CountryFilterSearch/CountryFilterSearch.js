@@ -10,7 +10,7 @@ function CountryFilterSearch({ countries }) {
     <div>
       <SearchBar
         searchValue={searchValue}
-        onSearch={setSearchValue}
+        onInputChange={setSearchValue}
         filterByRegion={filterByRegion}
         onFilterChange={setFilterByRegion}
       />
