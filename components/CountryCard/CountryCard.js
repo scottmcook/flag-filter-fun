@@ -12,7 +12,6 @@ function CountryCard({ data }) {
           height={150}
           width={150}
           src={flag}
-          style={{ objectFit: "contain", height: 150 }}
         />
         <div className="mt-3 ml-3 mb-3">
           <div>{name}</div>
