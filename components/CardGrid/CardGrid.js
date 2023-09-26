@@ -6,7 +6,11 @@ function CardGrid({ items, searchValue }) {
     <>
       <div className="grid grid-cols-4 gap-9">
         {items.map((country) => {
-          return <CountryCard key={country.alpha3code} data={country} />;
+          if (searchValue == country.name) {
+            return <CountryCard key={country} data={country} />;
+          } else if (searchValue == "") {
+            return <CountryCard key={country.alpha3code} data={country} />;
+          }
         })}
       </div>
     </>
