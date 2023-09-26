@@ -4,6 +4,7 @@ import CountryFilterSearch from "@/components/CountryFilterSearch/CountryFilterS
 
 // Data fetching
 import useSWR from "swr";
+import NavBar from "@/components/NavBar/NavBar";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Index({ countries }) {
@@ -25,5 +26,10 @@ export default function Index({ countries }) {
       </div>
     );
 
-  return <CountryFilterSearch countries={data} />;
+  return (
+    <>
+      <NavBar />
+      <CountryFilterSearch countries={data} />
+    </>
+  );
 }
