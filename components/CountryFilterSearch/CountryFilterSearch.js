@@ -3,7 +3,7 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import CardGrid from "@/components/CardGrid/CardGrid";
 
 function CountryFilterSearch({ countries }) {
-  const [searchValue, setSearchValue] = useState("Search for a country...");
+  const [searchValue, setSearchValue] = useState("");
   const [filterByRegion, setFilterByRegion] = useState("");
 
   return (
