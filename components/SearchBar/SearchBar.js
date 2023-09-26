@@ -17,6 +17,7 @@ function SearchBar({
       <select
         name="regions"
         id="region-filter"
+        placeholder="Search for a country..."
         onChange={(e) => onFilterChange(e.target.value)}
       >
         <option value={"Africa"}>Africa</option>
