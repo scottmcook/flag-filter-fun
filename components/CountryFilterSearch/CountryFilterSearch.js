@@ -7,7 +7,7 @@ function CountryFilterSearch({ countries }) {
   const [filterByRegion, setFilterByRegion] = useState("");
 
   return (
-    <div>
+    <div className="mx-20">
       <SearchBar
         searchValue={searchValue}
         onInputChange={setSearchValue}
