@@ -4,7 +4,7 @@ import CountryCard from "../CountryCard/CountryCard";
 function CardGrid({ items, searchValue }) {
   return (
     <>
-      <div className="grid grid-cols-4 gap-9">
+      <div className="grid grid-cols-4 gap-20 mx-20">
         {items.map((country) => {
           if (searchValue == country.name) {
             return <CountryCard key={country} data={country} />;
