@@ -14,7 +14,11 @@ function CountryFilterSearch({ countries }) {
         filterByRegion={filterByRegion}
         onFilterChange={setFilterByRegion}
       />
-      <CardGrid searchValue={searchValue} items={countries} />
+      <CardGrid
+        searchValue={searchValue}
+        filterByRegion={filterByRegion}
+        items={countries}
+      />
     </div>
   );
 }
