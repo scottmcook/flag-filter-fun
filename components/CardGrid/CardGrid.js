@@ -1,17 +1,25 @@
-import React, { useState } from "react";
-import CountryCard from "../CountryCard/CountryCard";
+import React, { useMemo, useState } from "react";
+import CountryCard from "@/components/CountryCard/CountryCard";
 
-function CardGrid({ items, searchValue }) {
+function CardGrid({ items, searchValue, filterByRegion }) {
+  const searchMatch = (value) => value.country == searchValue;
+  const filterMatch = (value) => {
+    return value.region == filterByRegion;
+  };
+
+  const searchItem = items.filter(searchMatch);
+  const filteredCountries = items.filter(filterMatch).map((country) => {
+    return <CountryCard key={country.name} data={country} />;
+  });
+
+  const loadAllCountries = items.map((country) => {
+    return <CountryCard key={country.name} data={country} />;
+  });
+
   return (
     <>
       <div className="grid grid-cols-4 gap-20">
-        {items.map((country) => {
-          if (searchValue == country.name) {
-            return <CountryCard key={country} data={country} />;
-          } else if (searchValue == "") {
-            return <CountryCard key={country.alpha3code} data={country} />;
-          }
-        })}
+        {filteredCountries.length > 1 ? filteredCountries : loadAllCountries}
       </div>
     </>
   );
