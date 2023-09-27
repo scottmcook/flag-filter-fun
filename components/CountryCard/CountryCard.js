@@ -7,10 +7,10 @@ function CountryCard({ data }) {
     <>
       <div className="flex flex-col pt-3 border border-[#dbdce1] rounded-lg hover:scale-110 transition duration-200 cursor-pointer object-cover">
         <Image
-          className="self-center"
+          className="w-full h-auto self-center"
           alt={`${name} flag`}
-          height={150}
-          width={150}
+          height={0}
+          width={0}
           src={flag}
         />
         <div className="mt-3 ml-3 mb-3">
