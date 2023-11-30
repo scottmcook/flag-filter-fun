@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
-function CountryCard({ data }) {
-  const { name, flag, capital, population, region } = data;
+function CountryCard({ country }) {
+  const { name, flag, capital, population, region } = country;
   return (
     <>
       <div className="flex flex-col pt-3 border border-[#dbdce1] rounded-lg hover:scale-110 transition duration-200 cursor-pointer object-cover">

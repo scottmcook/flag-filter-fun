@@ -9,11 +9,11 @@ function CardGrid({ items, searchValue, filterByRegion }) {
 
   const searchItem = items.filter(searchMatch);
   const filteredCountries = items.filter(filterMatch).map((country) => {
-    return <CountryCard key={country.name} data={country} />;
+    return <CountryCard key={country.name} country={country} />;
   });
 
   const loadAllCountries = items.map((country) => {
-    return <CountryCard key={country.name} data={country} />;
+    return <CountryCard key={country.name} country={country} />;
   });
 
   return (
