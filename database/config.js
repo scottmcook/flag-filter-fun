@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -9,6 +8,7 @@ import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
   apiKey: "AIzaSyCOLouwLpUPx7f1vvEu2qmHYrLTo5uqTJg",
   authDomain: "countriesdb-a00c2.firebaseapp.com",
+  databaseURL: "https://countriesdb-a00c2-default-rtdb.firebaseio.com",
   projectId: "countriesdb-a00c2",
   storageBucket: "countriesdb-a00c2.appspot.com",
   messagingSenderId: "710665309116",
