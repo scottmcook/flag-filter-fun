@@ -7,21 +7,6 @@ import { db } from '../database/firebase';
 const Page = () => {
   const [data, setData] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const snapshot = await firebase.database().ref(db).once('value');
-  //       const newData = snapshot.val();
-  //       setData(newData);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-	
-
 	useEffect(() => {
 		const dbRef = ref(getDatabase());
 		get((dbRef)).then((snapshot) => {
