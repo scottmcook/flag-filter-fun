@@ -8,16 +8,17 @@ function CardGrid({ countries }) {
       {!countries.length ? (
         <h1>No countries found</h1>
       ) : (
-        countries.map((pet) => {
+        countries.map((country) => {
           return (
             <CountryCard
-              animal={pet.animal}
-              id={pet.id}
-              name={pet.name}
-              breed={pet.breed}
-              images={pet.images}
-              location={pet.city}
-              key={pet.id}
+              key={country.name}
+              animal={country.animal}
+              id={country.id}
+              name={country.name}
+              breed={country.breed}
+              images={country.images}
+              location={country.city}
+              flag={country.flag}
             />
           );
         })
