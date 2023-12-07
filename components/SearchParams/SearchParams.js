@@ -4,9 +4,9 @@ import fetchSearch from "../utils/fetchSearch";
 import CardGrid from "../CardGrid/CardGrid";
 
 // Firebase calls
-import { collection, getDocs, querySnapshot } from 'firebase/firestore';
+
 import { getDatabase, ref, child, get } from 'firebase/database';
-import {db} from '../../database/firebase'
+import { db } from '../../firebaseConfig';
 
 const REGIONS = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 
@@ -17,7 +17,7 @@ const SearchParams = () => {
     capital: "",
   });
   
-  const [countries, setData] = useState([]);
+  const [countries, setCountries] = useState([]);
   // const results = useQuery({ requestParams: "search", queryKey: [fetchSearch]});
   // const countries = db ?? [];
 
@@ -25,9 +25,9 @@ const SearchParams = () => {
 		const dbRef = ref(getDatabase());
 		get((dbRef)).then((snapshot) => {
 			if (snapshot.exists()) {
-				console.log(snapshot.val());
         const newData = snapshot.val();
-        setData(newData);
+
+        setCountries(newData);
 			} else {
 				console.log("No data available");
 			}
@@ -35,8 +35,6 @@ const SearchParams = () => {
 			console.error(error);
 		});
 	}, [])
-
-  console.log(countries)
   
   return (
     <div>
