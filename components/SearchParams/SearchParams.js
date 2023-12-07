@@ -10,8 +10,7 @@ const SearchParams = () => {
     name: "",
     capital: "",
   });
-
-  const results = useQuery({ requestParam, fetchSearch});
+  const results = useQuery({ requestParam: "search", queryKey: [fetchSearch]});
   const countries = results?.data?.name ?? [];
   
   return (
@@ -39,7 +38,7 @@ const SearchParams = () => {
         />
       </label>
       <div>
-        <label className="justify-self-end" htmlfor="region-filter">
+        <label className="justify-self-end" htmlFor="region-filter">
           Filter by Region
         </label>
         <select
