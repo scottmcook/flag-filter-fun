@@ -1,37 +1,29 @@
 import React, { useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import CountryFilterSearch from "@/components/CountryFilterSearch/CountryFilterSearch";
+import SearchParams from "@/components/SearchParams/SearchParams";
 
 // Data fetching
 import useSWR from "swr";
 import NavBar from "@/components/NavBar/NavBar";
-import Page from "./page";
 const fetcher = false;
 
-export default function Index() {
-  const { data, error, isLoading } = useSWR("/api/staticdata", fetcher);
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    },
+  },
+});
 
-  if (error) return <div>Failed to load</div>;
-  if (isLoading) return <div>Loading...</div>;
-  if (error)
-    return (
-      <div>
-        <h1>404</h1>
-        <p>Loading failed...</p>
-      </div>
-    );
-  if (!data)
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
+export default function Index() {
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <NavBar />
-      <CountryFilterSearch countries={data} />
-    </>
+      <SearchParams  />
+    </QueryClientProvider>
   );
 
 }
