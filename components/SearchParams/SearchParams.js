@@ -1,30 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import fetchSearch from "../utils/fetchSearch";
 import CardGrid from "../CardGrid/CardGrid";
 
+// Firebase calls
+import { collection, getDocs, querySnapshot } from 'firebase/firestore';
+import { getDatabase, ref, child, get } from 'firebase/database';
+import {db} from '../../database/firebase'
+
 const REGIONS = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 
 const SearchParams = () => {
-  const [requestParam, setRequestParam] = useState({
+
+  const [requestParams, setRequestParams] = useState({
     name: "",
     capital: "",
   });
-  const results = useQuery({ requestParam: "search", queryKey: [fetchSearch]});
-  const countries = results?.data?.name ?? [];
+  
+  const [countries, setData] = useState([]);
+  // const results = useQuery({ requestParams: "search", queryKey: [fetchSearch]});
+  // const countries = db ?? [];
+
+  useEffect(() => {
+		const dbRef = ref(getDatabase());
+		get((dbRef)).then((snapshot) => {
+			if (snapshot.exists()) {
+				console.log(snapshot.val());
+        const newData = snapshot.val();
+        setData(newData);
+			} else {
+				console.log("No data available");
+			}
+		}).catch((error) => {
+			console.error(error);
+		});
+	}, [])
+
+  console.log(countries)
   
   return (
     <div>
-
     <form
         className="flex justify-between pb-10"
         onSubmit={(e) => {
           e.preventDefault();
           const formData = new FormData(e.target);
           const obj = {
-            animal: formData.get("animal") ?? "",
-            breed: formData.get("breed") ?? "",
-            location: formData.get("location") ?? "",
+            name: formData.get("name") ?? "",
+            regions: formData.get("regions") ?? "",
+            capital: formData.get("capital") ?? "",
           };
           setRequestParams(obj);
         }}
@@ -54,6 +78,7 @@ const SearchParams = () => {
             })}
         </select>
       </div>
+      <button>Submit</button>
     </form>
       <CardGrid countries={countries} />
     </div>
