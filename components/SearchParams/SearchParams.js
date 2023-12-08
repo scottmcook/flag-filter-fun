@@ -7,7 +7,7 @@ import CardGrid from "../CardGrid/CardGrid";
 import db from "@/firebaseConfig";
 import { getDatabase, ref, child, get } from 'firebase/database';
 
-const REGIONS = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+const REGIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 const SearchParams = () => {
 
