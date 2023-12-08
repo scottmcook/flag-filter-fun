@@ -14,10 +14,9 @@ function CardGrid({ countries }) {
               key={country.name}
               animal={country.animal}
               id={country.id}
-              name={country.name}
-              breed={country.breed}
-              images={country.images}
-              location={country.city}
+              capital={country.capital}
+              population={country.population}
+              region={country.region}
               flag={country.flag}
             />
           );

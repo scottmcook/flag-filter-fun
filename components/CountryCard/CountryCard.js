@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 function CountryCard({ name, flag, capital, population, region }) {
-  // const { name, flag, capital, population, region } = country;
+
   return (
     <>
       <div className="flex flex-col pt-3 border border-[#dbdce1] rounded-lg hover:scale-110 transition duration-200 cursor-pointer object-cover">
@@ -14,9 +14,9 @@ function CountryCard({ name, flag, capital, population, region }) {
           src={flag}
         />
         <div className="mt-3 ml-3 mb-3">
-          <div>{name}</div>
-          <div>{capital}</div>
-          <div>{population}</div>
+          <div>Name: {name}</div>
+          <div>Capital: {capital}</div>
+          <div>Population: {population}</div>
           <div>{region}</div>
         </div>
       </div>
