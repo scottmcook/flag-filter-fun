@@ -14,10 +14,10 @@ function CountryCard({ name, flag, capital, population, region }) {
           src={flag}
         />
         <div className="mt-3 ml-3 mb-3">
-          <div>Name: {name}</div>
-          <div>Capital: {capital}</div>
-          <div>Population: {population}</div>
-          <div>{region}</div>
+          <div><span className="font-semibold">Name:</span> {name}</div>
+          <div><span className="font-semibold">Capital:</span> {capital}</div>
+          <div><span className="font-semibold">Population:</span> {population.toLocaleString('en-US')}</div>
+          <div><span className="font-semibold">Region:</span> {region}</div>
         </div>
       </div>
     </>

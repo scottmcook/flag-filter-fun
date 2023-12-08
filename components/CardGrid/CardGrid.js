@@ -12,9 +12,9 @@ function CardGrid({ countries }) {
           return (
             <CountryCard
               key={country.name}
-              animal={country.animal}
+              name={country.name}
               id={country.id}
-              capital={country.capital}
+              capital={country.capital ?? 'none'}
               population={country.population}
               region={country.region}
               flag={country.flag}
