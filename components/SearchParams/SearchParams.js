@@ -4,21 +4,23 @@ import fetchSearch from "../utils/fetchSearch";
 import CardGrid from "../CardGrid/CardGrid";
 
 // Firebase calls
-
+import db from "@/firebaseConfig";
 import { getDatabase, ref, child, get } from 'firebase/database';
-import { db } from '../../firebaseConfig';
 
 const REGIONS = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 
 const SearchParams = () => {
 
+  const [selectedRegion, setSelectedRegion] = useState("");
   const [requestParams, setRequestParams] = useState({
     name: "",
     capital: "",
+    region: ""
   });
+  const [filteredCountries, setFilteredCountries] = useState([]);
   
-  const [countries, setCountries] = useState([]);
-  // const results = useQuery({ requestParams: "search", queryKey: [fetchSearch]});
+  const [countries, setCountries] = useState("");
+  const results = useQuery({ requestParams: "search", queryKey: [fetchSearch]});
   // const countries = db ?? [];
 
   useEffect(() => {
@@ -26,7 +28,6 @@ const SearchParams = () => {
 		get((dbRef)).then((snapshot) => {
 			if (snapshot.exists()) {
         const newData = snapshot.val();
-
         setCountries(newData);
 			} else {
 				console.log("No data available");
@@ -35,6 +36,18 @@ const SearchParams = () => {
 			console.error(error);
 		});
 	}, [])
+
+   // Handle region selection
+   const handleRegionChange = (event) => {
+    const selectedRegion = event.target.value;
+    setSelectedRegion(selectedRegion);
+
+    // Filter countries based on the selected region
+    const filteredCountries = countries.filter(country => country.region === selectedRegion);
+    setCountries(filteredCountries);
+    console.log(filteredCountries)
+  };
+
   
   return (
     <div>
@@ -45,8 +58,8 @@ const SearchParams = () => {
           const formData = new FormData(e.target);
           const obj = {
             name: formData.get("name") ?? "",
-            regions: formData.get("regions") ?? "",
-            capital: formData.get("capital") ?? "",
+            region: formData.get("region") ?? "",
+            // capital: formData.get("capital") ?? "",
           };
           setRequestParams(obj);
         }}
@@ -67,7 +80,12 @@ const SearchParams = () => {
           name="regions"
           id="region-filter"
           placeholder="Search for a country..."
-          onChange={(e) => onFilterChange(e.target.value)}
+          onChange={(e) => {
+            handleRegionChange(e);
+          }}
+          onBlur={(e) => {
+            handleRegionChange(e);
+          }}
           >
           {REGIONS.map(region => {
             return (
