@@ -12,16 +12,8 @@ const REGIONS = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 const SearchParams = () => {
 
   const [selectedRegion, setSelectedRegion] = useState("");
-  const [requestParams, setRequestParams] = useState({
-    name: "",
-    capital: "",
-    region: ""
-  });
   const [filteredCountries, setFilteredCountries] = useState([]);
-  
   const [countries, setCountries] = useState("");
-  const results = useQuery({ requestParams: "search", queryKey: [fetchSearch]});
-  // const countries = db ?? [];
 
   useEffect(() => {
 		const dbRef = ref(getDatabase());
@@ -44,7 +36,7 @@ const SearchParams = () => {
 
     // Filter countries based on the selected region
     const filteredCountries = countries.filter(country => country.region === selectedRegion);
-    setCountries(filteredCountries);
+    setFilteredCountries(filteredCountries);
     console.log(filteredCountries)
   };
 
@@ -75,7 +67,6 @@ const SearchParams = () => {
       <div>
         <label className="justify-self-end" htmlFor="region-filter">
           Filter by Region
-        </label>
         <select
           name="regions"
           id="region-filter"
@@ -87,16 +78,25 @@ const SearchParams = () => {
             handleRegionChange(e);
           }}
           >
+            <option />
           {REGIONS.map(region => {
             return (
               <option key={region} value={region}>{region}</option>
               )
             })}
         </select>
+        </label>
       </div>
       <button>Submit</button>
     </form>
-      <CardGrid countries={countries} />
+      
+      {selectedRegion ? (
+           <CardGrid countries={filteredCountries} />
+        ) : (   
+            <CardGrid countries={countries} />
+          )
+        }
+     
     </div>
   );
 }
