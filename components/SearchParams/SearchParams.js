@@ -3,10 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import fetchSearch from "../utils/fetchSearch";
 import CardGrid from "../CardGrid/CardGrid";
 
-// Firebase calls
-import db from "@/firebaseConfig";
-import { getDatabase, ref, child, get } from 'firebase/database';
-
 const REGIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 const SearchParams = () => {
