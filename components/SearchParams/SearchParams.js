@@ -11,9 +11,11 @@ const REGIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 const SearchParams = () => {
 
+  const [countries, setCountries] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("");
   const [filteredCountries, setFilteredCountries] = useState([]);
-  const [countries, setCountries] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState("");
 
   useEffect(() => {
 		const dbRef = ref(getDatabase());
@@ -37,7 +39,15 @@ const SearchParams = () => {
     // Filter countries based on the selected region
     const filteredCountries = countries.filter(country => country.region === selectedRegion);
     setFilteredCountries(filteredCountries);
-    console.log(filteredCountries)
+  };
+
+  const handleSearchEvent = (event) => {
+    const searchName = event.target.value;
+    setSearchTerm(searchName);
+
+    // Filter countries based on the search 
+    const searchResults = countries.filter(country => country.name.includes(searchName));
+    setFilteredCountries(searchName);
   };
 
   
@@ -47,13 +57,14 @@ const SearchParams = () => {
         className="flex justify-between pb-10"
         onSubmit={(e) => {
           e.preventDefault();
-          const formData = new FormData(e.target);
-          const obj = {
-            name: formData.get("name") ?? "",
-            region: formData.get("region") ?? "",
-            // capital: formData.get("capital") ?? "",
-          };
-          setRequestParams(obj);
+          // const formData = new FormData(e.target);
+          // const obj = {
+          //   name: formData.get("name") ?? "",
+          //   region: formData.get("region") ?? "",
+          //   // capital: formData.get("capital") ?? "",
+          // };
+          // console.log(obj);
+          handleSearchEvent(e);
         }}
       >
       <label htmlFor="country">
@@ -62,6 +73,7 @@ const SearchParams = () => {
         id="country"
         name="country"
         placeholder="Country"
+        onChange={(e) => setSearchTerm(e.target.value)}
         />
       </label>
       <div>
@@ -89,8 +101,8 @@ const SearchParams = () => {
       </div>
       <button>Submit</button>
     </form>
-      
-      {selectedRegion ? (
+=
+      {selectedRegion || searchTerm ? (
            <CardGrid countries={filteredCountries} />
         ) : (   
             <CardGrid countries={countries} />
