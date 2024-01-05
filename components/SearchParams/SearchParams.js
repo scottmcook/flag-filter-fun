@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
 import fetchSearch from "../utils/fetchSearch";
 import CardGrid from "../CardGrid/CardGrid";
 
@@ -7,28 +11,13 @@ const REGIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 const SearchParams = () => {
 
-  const [countries, setCountries] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("");
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState("");
 
-  useEffect(() => {
-		const dbRef = ref(getDatabase());
-		get((dbRef)).then((snapshot) => {
-			if (snapshot.exists()) {
-        const newData = snapshot.val();
-        setCountries(newData);
-			} else {
-				console.log("No data available");
-			}
-		}).catch((error) => {
-			console.error(error);
-		});
-	}, [])
-
    // Handle region selection
-   const handleRegionChange = (event) => {
+  const handleRegionChange = (event) => {
     const selectedRegion = event.target.value;
     setSelectedRegion(selectedRegion);
 
@@ -46,20 +35,28 @@ const SearchParams = () => {
     setFilteredCountries(searchName);
   };
 
-  
+  const { isPending, isError, data } = useQuery({
+    queryKey: ['countryData'],
+    queryFn: fetchSearch
+  })
+
+  const countries = data ?? [];
+
+  if (isPending) {
+    return <span>Loading...</span>
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>
+  }
+
   return (
     <div>
     <form
         className="flex justify-between pb-10"
         onSubmit={(e) => {
           e.preventDefault();
-          // const formData = new FormData(e.target);
-          // const obj = {
-          //   name: formData.get("name") ?? "",
-          //   region: formData.get("region") ?? "",
-          //   // capital: formData.get("capital") ?? "",
-          // };
-          // console.log(obj);
+        
           handleSearchEvent(e);
         }}
       >

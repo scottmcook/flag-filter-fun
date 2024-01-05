@@ -1,16 +1,13 @@
-async function fetchSearch({ queryKey }) {
-  const {name} = queryKey[1];
 
-  if (!name) return []
-  
+async function fetchSearch({ queryKey }) {
+
   const res = await fetch(
-    `https://countriesdb-a00c2-default-rtdb.firebaseio.com/name=${name}`
+    `https://raw.githubusercontent.com/scottmcook/flag-filter-fun/main/data/countries.json`
   );
 
   if (!res.ok) {
     throw new Error(`country search not okie dokie ${name}`);
   }
-
   return res.json();
 }
 
