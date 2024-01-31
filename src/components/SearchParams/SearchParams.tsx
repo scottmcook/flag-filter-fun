@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import fetchSearch from "../utils/fetchSearch";
+import { useState } from "react";
 import CardGrid from "../CardGrid/CardGrid";
-
-// Firebase calls
-import db from "@/firebaseConfig";
-import { getDatabase, ref, child, get } from 'firebase/database';
 
 const REGIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
@@ -15,40 +9,6 @@ const SearchParams = () => {
   const [selectedRegion, setSelectedRegion] = useState("");
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState("");
-
-  useEffect(() => {
-		const dbRef = ref(getDatabase());
-		get((dbRef)).then((snapshot) => {
-			if (snapshot.exists()) {
-        const newData = snapshot.val();
-        setCountries(newData);
-			} else {
-				console.log("No data available");
-			}
-		}).catch((error) => {
-			console.error(error);
-		});
-	}, [])
-
-   // Handle region selection
-   const handleRegionChange = (event) => {
-    const selectedRegion = event.target.value;
-    setSelectedRegion(selectedRegion);
-
-    // Filter countries based on the selected region
-    const filteredCountries = countries.filter(country => country.region === selectedRegion);
-    setFilteredCountries(filteredCountries);
-  };
-
-  const handleSearchEvent = (event) => {
-    const searchName = event.target.value;
-    setSearchTerm(searchName);
-
-    // Filter countries based on the search 
-    const searchResults = countries.filter(country => country.name.includes(searchName));
-    setFilteredCountries(searchName);
-  };
 
   
   return (

@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import CountryCard from "@/components/CountryCard/CountryCard";
+import CountryCard from "./components/CountryCard/CountryCard";
 
 function CardGrid({ countries }) {
   return (
