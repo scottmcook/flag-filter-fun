@@ -1,7 +1,18 @@
-import React, { useMemo, useState } from "react";
-import CountryCard from "./components/CountryCard/CountryCard";
+import CountryCard from "../CountryCard/CountryCard";
 
-function CardGrid({ countries }) {
+type Country = {
+  name: string;
+  flag: string; 
+  capital: string; 
+  population: number;
+  region: string;
+}
+
+type CardGridProps = {
+  countries: Array<Country>;
+}
+
+function CardGrid({ countries }: CardGridProps) {
   return (
     <>
       <div className="grid grid-cols-4 gap-20">
@@ -13,7 +24,6 @@ function CardGrid({ countries }) {
             <CountryCard
               key={country.name}
               name={country.name}
-              id={country.id}
               capital={country.capital ?? 'none'}
               population={country.population}
               region={country.region}
