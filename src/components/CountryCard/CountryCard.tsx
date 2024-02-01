@@ -1,7 +1,11 @@
-import React from "react";
-
-function CountryCard({ name, flag, capital, population, region }) {
-
+type CountryCardProps = {
+  name: string;
+  flag: string; 
+  capital: string; 
+  population: number;
+  region: string;
+}
+function CountryCard({ name, flag, capital, population, region }: CountryCardProps) {
   return (
     <>
       <div className="flex flex-col pt-3 border border-[#dbdce1] rounded-lg hover:scale-110 transition duration-200 cursor-pointer object-cover">
