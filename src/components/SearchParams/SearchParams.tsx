@@ -1,4 +1,4 @@
-import { FormEvent, SetStateAction, useState, useEffe } from "react";
+import { useState } from "react";
 import CardGrid from "../CardGrid/CardGrid";
 // import fetchSearch from "../utils/fetchSearch";
 import { useQuery } from "react-query";
@@ -12,7 +12,6 @@ type Country = {
   flag: {
     large: string;
   };
-  // Add more properties as needed
 }
 
 
@@ -52,7 +51,6 @@ const SearchParams = () => {
 
   return (
     <div>
-
       <label htmlFor="country">
         Country Search 
       <input
