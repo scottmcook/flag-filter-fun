@@ -2,7 +2,11 @@ import CountryCard from "../CountryCard/CountryCard";
 
 type Country = {
   name: string;
-  flag: string; 
+  flag: {
+    small: string;
+    medium: string;
+    large: string;
+  }; 
   capital: string; 
   population: number;
   region: string;
@@ -27,7 +31,7 @@ function CardGrid({ countries }: CardGridProps) {
               capital={country.capital ?? 'none'}
               population={country.population}
               region={country.region}
-              flag={country.flag}
+              flag={country.flag.medium}
             />
           );
         })
