@@ -1,5 +1,3 @@
-import React from "react";
-
 function NavBar() {
   return (
     <nav className="flex justify-between px-20 mb-10 border-b-slate-600 border-b-2">
