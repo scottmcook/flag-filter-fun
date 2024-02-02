@@ -3,61 +3,56 @@ import CardGrid from "../CardGrid/CardGrid";
 // import fetchSearch from "../utils/fetchSearch";
 import { useQuery } from "react-query";
 
+type Country = {
+  alpha3Code: string;
+  name: string;
+  population: number;
+  region: string;
+  capital: string;
+  flag: {
+    large: string;
+  };
+  // Add more properties as needed
+}
 
-const REGIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+
+const REGIONS = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 const SearchParams = () => {
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [regionFilter, setRegionFilter] = useState('');
+  const [filterParam, setFilterParam] = useState('All');
 
-  const { isPending, error, data } = useQuery({
-    queryKey: ['countryData'],
-    queryFn: () =>
-      fetch('https://raw.githubusercontent.com/scottmcook/flag-filter-fun/main/data/countries.json').then((res) =>
-        res.json(),
-      ),
-  })
+  const { data: countries = [], error, isPending } = useQuery(
+    "countries",
+    async () => {
+      const response = await fetch(
+        "https://raw.githubusercontent.com/iamspruce/search-filter-painate-reactjs/main/data/countries.json"
+      );
+      const result = await response.json();
+      return Object.values(result) as Country[];
+    }
+  );
+
+  const filteredData = countries.filter((item) => {
+    if (filterParam === "All" || item.region === filterParam) {
+      return ["capital", "name", "numericCode"].some((newItem) =>
+        item[newItem as keyof Country]
+          .toString()
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase())
+      );
+    }
+    return false;
+  });
+
   if (isPending) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
 
-  const countries = data ?? [];
-
-  useEffect(() => {
-    // Function to filter countries based on search input and region
-    const filterCountries = () => {
-      return countries.filter((country) => {
-        const matchesSearch =
-          country.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          country.capital.toLowerCase().includes(searchQuery.toLowerCase());
-
-        const matchesRegion = regionFilter === '' || country.region === regionFilter;
-
-        return matchesSearch && matchesRegion;
-      });
-    };
-
-    setFilteredCountries(filterCountries());
-  }, [searchQuery, regionFilter, countries]);
-
-  const handleSearchEvent = (event: FormEvent<HTMLFormElement>) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const handleRegionFilterChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-    setRegionFilter(event.target.value);
-  };
-
   return (
     <div>
-    <form
-        className="flex justify-between pb-10"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSearchEvent(e);
-        }}
-      >
+
       <label htmlFor="country">
         Country Search 
       <input
@@ -74,13 +69,9 @@ const SearchParams = () => {
           name="regions"
           id="region-filter"
           onChange={(e) => {
-            handleRegionFilterChange(e);
-          }}
-          onBlur={(e) => {
-            handleRegionFilterChange(e);
+            setFilterParam(e.target.value);
           }}
           >
-            <option />
           {REGIONS.map(region => {
             return (
               <option key={region} value={region}>{region}</option>
@@ -89,11 +80,11 @@ const SearchParams = () => {
         </select>
         </label>
       </div>
-      <button>Submit</button>
-    </form>
+
+
 
       {countries ? (
-           <CardGrid countries={countries} />
+           <CardGrid countries={filteredData} />
         ) : (   
             <h1>No countries found</h1>
           )
