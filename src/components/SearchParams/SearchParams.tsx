@@ -1,6 +1,5 @@
 import { useState } from "react";
 import CardGrid from "../CardGrid/CardGrid";
-// import fetchSearch from "../utils/fetchSearch";
 import { useQuery } from "react-query";
 
 type Country = {
@@ -22,7 +21,7 @@ const SearchParams = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterParam, setFilterParam] = useState('All');
 
-  const { data: countries = [], error, isPending } = useQuery(
+  const { data: countries = [], isError, isLoading } = useQuery(
     "countries",
     async () => {
       const response = await fetch(
@@ -45,9 +44,9 @@ const SearchParams = () => {
     return false;
   });
 
-  if (isPending) return 'Loading...'
+  if (isLoading) return 'Loading...'
 
-  if (error) return 'An error has occurred: ' + error.message
+  if (isError) return 'An error has occurred: ' + isError
 
   return (
     <div>

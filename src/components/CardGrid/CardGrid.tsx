@@ -3,8 +3,6 @@ import CountryCard from "../CountryCard/CountryCard";
 type Country = {
   name: string;
   flag: {
-    small: string;
-    medium: string;
     large: string;
   }; 
   capital: string; 
