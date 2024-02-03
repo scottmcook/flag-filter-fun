@@ -28,7 +28,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="flex justify-between px-20 py-5 mb-10 bg-white dark:bg-dark-blue-elements shadow-sm">
+    <nav className="flex justify-between px-8 py-5 mb-10 bg-white dark:bg-dark-blue-elements shadow-sm">
       <h1 className="text-3xl  font-bold">Where in the World?</h1>
       <button className="" onClick={() => toggleTheme()}>Dark Mode</button>
     </nav>
