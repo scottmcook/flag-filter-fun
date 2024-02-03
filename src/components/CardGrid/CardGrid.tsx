@@ -19,7 +19,7 @@ type CardGridProps = {
 function CardGrid({ countries }: CardGridProps) {
   return (
     <>
-      <div className="grid grid-cols-4 gap-20">
+      <div className="grid grid-cols-4 gap-20 mx-8 bg-white dark:bg-dark-very-blue">
       {!countries.length ? (
         <h1>No countries found</h1>
       ) : (
@@ -31,7 +31,7 @@ function CardGrid({ countries }: CardGridProps) {
               capital={country.capital ?? 'none'}
               population={country.population}
               region={country.region}
-              flag={country.flag.medium}
+              flag={country.flag.large}
             />
           );
         })
