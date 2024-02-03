@@ -51,21 +51,24 @@ const SearchParams = () => {
 
   return (
     <div>
-      <label htmlFor="country">
+      <label htmlFor="country" className="sr-only">
         Country Search 
+      </label>
       <input
         id="country"
         name="country"
-        placeholder="Country"
+        placeholder="Search for a country"
+        className="py-3 dark:bg-gray-700 shadow-md rounded-md"
         onChange={(e) => setSearchQuery(e.target.value)}
         />
-      </label>
+  
       <div>
         <label className="justify-self-end" htmlFor="region-filter">
           Filter by Region
         <select
           name="regions"
           id="region-filter"
+          className="dark:bg-gray-700"
           onChange={(e) => {
             setFilterParam(e.target.value);
           }}
