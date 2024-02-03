@@ -7,8 +7,10 @@ const queryClient = new QueryClient()
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <NavBar />
-      <SearchParams />
+      <div className='dark:bg-gray-800'>
+        <NavBar />
+        <SearchParams />
+      </div>
     </QueryClientProvider>
   )
 }
