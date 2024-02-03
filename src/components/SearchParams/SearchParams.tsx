@@ -51,7 +51,7 @@ const SearchParams = () => {
 
   return (
     <div>
-      <div className="flex justify-between mx-8 mb-10">
+      <div className="flex flex-wrap justify-between mx-8 mb-10">
         <label htmlFor="country" className="sr-only">
           Country Search 
         </label>
@@ -59,7 +59,7 @@ const SearchParams = () => {
           id="country"
           name="country"
           placeholder="Search for a country"
-          className="w-1/3 pl-5 py-3 shadow-sm rounded-md dark:bg-dark-blue-elements dark:font-white "
+          className="w-full lg:w-1/3 pl-5 py-3 shadow-sm rounded-md dark:bg-dark-blue-elements dark:font-white "
           onChange={(e) => setSearchQuery(e.target.value)}
           />
 
@@ -70,7 +70,7 @@ const SearchParams = () => {
           <select
             name="regions"
             id="region-filter"
-            className="w-48 pl-2 shadow-sm rounded-md dark:bg-dark-blue-elements"
+            className="w-full lg:w-48 lg:mt-0 pl-2 py-3 mt-6 shadow-sm rounded-md dark:bg-dark-blue-elements"
             onChange={(e) => {
               setFilterParam(e.target.value);
             }}
