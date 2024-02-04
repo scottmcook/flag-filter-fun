@@ -89,4 +89,4 @@ const proudOfThisFunc = () => {
 ## Author
 
 - Website - [Scott Cook](https://runnincode.com/)
-- LinkedIn - [@yourusername](https://www.linkedin.com/in/scott-cook/)
+- LinkedIn - [@scott-cook](https://www.linkedin.com/in/scott-cook/)
