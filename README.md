@@ -1,6 +1,6 @@
 # Frontend Mentor - REST Countries API with color theme switcher solution
 
-This was bootstrapped with [Vite.js](https://nextjs.org/) with the [`react-ts`](https://vitejs.dev/guide/) template.
+This was bootstrapped with Vite with the [`react-ts`](https://vitejs.dev/guide/) template.
 
 ## Getting Started
 
