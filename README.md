@@ -47,8 +47,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/scottmcook/flag-filter-fun)
-- Live Site URL: [Add live site URL here](https://flag-filter-nh2l19qd6-scottmcook.vercel.app/)
+- Solution URL: [Github](https://github.com/scottmcook/flag-filter-fun)
+- Live Site URL: [(https://flag-filter-nh2l19qd6-scottmcook.vercel.app/](https://flag-filter-nh2l19qd6-scottmcook.vercel.app/)
 
 ## My process
 
