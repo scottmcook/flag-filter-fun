@@ -2,6 +2,7 @@ import CountryCard from "../CountryCard/CountryCard";
 
 type Country = {
   name: string;
+  alpha3Code: string
   flag: {
     large: string;
   }; 
@@ -24,7 +25,8 @@ function CardGrid({ countries }: CardGridProps) {
         countries.map((country) => {
           return (
             <CountryCard
-              key={country.name}
+              id={country.alpha3Code}
+              key={country.alpha3Code}
               name={country.name}
               capital={country.capital ?? 'none'}
               population={country.population}

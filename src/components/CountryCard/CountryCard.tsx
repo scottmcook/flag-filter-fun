@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom";
+
 type CountryCardProps = {
+  id: string;
   name: string;
   flag: string
   capital: string; 
   population: number;
   region: string;
 }
-function CountryCard({ name, flag, capital, population, region }: CountryCardProps) {
+function CountryCard({ name, flag, capital, population, region, id }: CountryCardProps) {
   return (
-    <>
+    <Link to={`/details/${id}`} >
       <div className="flex flex-col bg-white shadow-md dark:bg-dark-blue-elements overflow-hidden rounded-lg hover:scale-110 transition duration-200 cursor-pointer object-cover">
         <div className="h-48 overflow-hidden shadow-sm">
         <img
@@ -24,7 +27,7 @@ function CountryCard({ name, flag, capital, population, region }: CountryCardPro
           <div><span className="font-semibold">Capital:</span> {capital}</div>
         </div>
       </div>
-    </>
+    </Link>
   );
 }
 
