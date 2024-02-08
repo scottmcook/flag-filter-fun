@@ -1,8 +1,31 @@
-# Frontend Mentor - REST Countries API with color theme switcher solution
+# Flag Filter Fun - REST Countries API with color theme switcher
 
-This was bootstrapped with Vite with the [`react-ts`](https://vitejs.dev/guide/) template.
+### Links
 
-## Getting Started
+- Solution URL: [Github](https://github.com/scottmcook/flag-filter-fun)
+- Live Site URL: [https://flag-filter-fun.vercel.app/](https://flag-filter-fun.vercel.app/)
+
+### The challenge
+
+Users should be able to:
+
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Toggle the color scheme between light and dark mode _(optional)_
+
+### Screenshots
+#### Light mode
+<img width="1722" alt="Screenshot 2024-02-07 at 9 04 56 PM" src="https://github.com/scottmcook/flag-filter-fun/assets/6232294/dbb31799-7b75-4685-b02b-70eda4070fce">
+
+#### Dark mode
+<img width="1728" alt="Screenshot 2024-02-07 at 9 04 44 PM" src="https://github.com/scottmcook/flag-filter-fun/assets/6232294/7dc515b9-fe28-4189-8a68-9e8d448497a7">
+
+### Performance
+
+<img width="894" alt="Screenshot 2024-02-07 at 9 01 27 PM" src="https://github.com/scottmcook/flag-filter-fun/assets/6232294/344a69bf-2bfe-4d38-aed3-54405e691157">
+
+## Running locally
 
 First, run the development server:
 
@@ -17,40 +40,6 @@ pnpm dev
 Open [http://localhost:5173/](http://localhost:5173/) with your browser to see the result.
 
 This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
-
-## Table of contents
-
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-## Overview
-
-### The challenge
-
-Users should be able to:
-
-- See all countries from the API on the homepage
-- Search for a country using an `input` field
-- Filter countries by region
-- Click on a country to see more detailed information on a separate page
-- Click through to the border countries on the detail page
-- Toggle the color scheme between light and dark mode _(optional)_
-
-### Links
-
-- Solution URL: [Github](https://github.com/scottmcook/flag-filter-fun)
-- Live Site URL: [https://flag-filter-fun.vercel.app/](https://flag-filter-fun.vercel.app/)
-
-## My process
 
 ### Built with
 
